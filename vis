@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+
+def visualize_nn(layers):
+    fig, ax = plt.subplots()
+
+    num_layers = len(layers)
+    max_neurons = max(layers)
+    
+    colors = ['blue'] + ['green'] * (num_layers - 2) + ['red']
+
+    for layer_index, (height, color) in enumerate(zip(layers, colors)):
+        ax.bar(layer_index, height, color=color)
+
+    ax.set_ylabel('Neurons')
+    ax.set_xlabel('Layers')
+    ax.set_title('Neural Network Architecture')
+    ax.set_xticks(range(num_layers))
+    ax.set_xticklabels(['Input', 'Hidden1', 'Hidden2', 'Output'])
+    
+    plt.tight_layout()
+    plt.show()
+
+# Layers of the network: 4 input neurons, 128 in hidden layer 1, 64 in hidden layer 2, and 2 output neurons
+layers = [4, 128, 64, 2]
+visualize_nn(layers)
